@@ -2,212 +2,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLAYZONE | Mini Games</title><style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
+    <title>PLAYZONE | Mini Games</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }    body {
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #09091c, #15133b, #080d20);
+        background: linear-gradient(135deg, #100b27, #171b46, #241044);
         color: white;
         min-height: 100vh;
+        text-align: center;
     }
 
     header {
-        text-align: center;
-        padding: 40px 15px;
-        background: linear-gradient(120deg, #24105a, #101d55, #092e50);
-        border-bottom: 2px solid #00e5ff;
+        padding: 35px 15px;
+        background: rgba(0,0,0,0.25);
+        border-bottom: 2px solid #00eaff;
     }
 
     header h1 {
         font-size: 42px;
-        color: #00e5ff;
-        margin-bottom: 12px;
-        letter-spacing: 2px;
+        color: #00eaff;
+        letter-spacing: 3px;
     }
 
     header p {
-        color: #d0d5ff;
-        font-size: 17px;
+        margin-top: 10px;
+        color: #ddd;
     }
 
-    .hero {
-        text-align: center;
-        padding: 45px 15px 30px;
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 35px 18px;
     }
 
-    .hero h2 {
-        font-size: 30px;
+    .container h2 {
         margin-bottom: 12px;
+        font-size: 27px;
     }
 
-    .hero p {
-        color: #b9c3e8;
-        font-size: 16px;
+    .intro {
+        color: #ccc;
+        margin-bottom: 30px;
         line-height: 1.6;
-    }
-
-    .badge {
-        display: inline-block;
-        background: #18254c;
-        color: #00e5ff;
-        padding: 9px 17px;
-        border-radius: 30px;
-        font-size: 12px;
-        margin-bottom: 20px;
-        border: 1px solid #344c91;
     }
 
     .games {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 22px;
-        padding: 20px;
-        max-width: 1100px;
-        margin: auto;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
     }
 
     .card {
-        background: linear-gradient(145deg, #20254b, #11182f);
-        padding: 28px 18px;
+        padding: 30px 18px;
         border-radius: 18px;
-        text-align: center;
-        border: 1px solid #39436e;
-        transition: 0.3s;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        text-decoration: none;
+        color: white;
+        transition: transform 0.2s;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
 
     .card:hover {
         transform: translateY(-7px);
-        border-color: var(--accent);
-        box-shadow: 0 0 20px var(--glow);
-    }
-
-    .icon {
-        font-size: 55px;
-        margin-bottom: 18px;
     }
 
     .card h3 {
-        color: var(--accent);
-        font-size: 21px;
-        margin-bottom: 12px;
+        font-size: 23px;
+        margin: 12px 0;
     }
 
     .card p {
-        color: #c1c9e2;
         font-size: 14px;
-        line-height: 1.6;
-        min-height: 45px;
-        margin-bottom: 20px;
+        line-height: 1.5;
     }
 
-    .play {
-        display: inline-block;
-        text-decoration: none;
-        background: var(--accent);
-        color: #080d20;
-        padding: 13px 28px;
-        border-radius: 9px;
-        font-weight: bold;
-        transition: 0.3s;
+    .icon {
+        font-size: 42px;
     }
 
-    .play:hover {
-        transform: scale(1.06);
-        box-shadow: 0 0 18px var(--glow);
-    }
-
-    .purple {
-        --accent: #c084fc;
-        --glow: rgba(192,132,252,0.5);
-    }
-
-    .blue {
-        --accent: #38bdf8;
-        --glow: rgba(56,189,248,0.5);
-    }
-
-    .pink {
-        --accent: #fb7185;
-        --glow: rgba(251,113,133,0.5);
-    }
-
-    .green {
-        --accent: #4ade80;
-        --glow: rgba(74,222,128,0.5);
-    }
+    .purple { background: linear-gradient(135deg, #7928ca, #4b16a1); }
+    .blue { background: linear-gradient(135deg, #1687e8, #1246a0); }
+    .pink { background: linear-gradient(135deg, #ed4194, #9b176d); }
+    .green { background: linear-gradient(135deg, #16a879, #08734f); }
 
     footer {
-        text-align: center;
-        padding: 30px 15px;
-        margin-top: 35px;
-        color: #8995bd;
-        border-top: 1px solid #28345b;
+        padding: 25px;
+        margin-top: 30px;
+        color: #aaa;
         font-size: 13px;
-    }
-
-    @media (max-width: 480px) {
-        header h1 {
-            font-size: 34px;
-        }
-
-        .hero h2 {
-            font-size: 25px;
-        }
-
-        .games {
-            padding: 15px;
-            gap: 17px;
-        }
-
-        .card {
-            padding: 25px 15px;
-        }
     }
 </style>
 
-</head><body><header>
+</head>
+<body><header>
     <h1>🎮 PLAYZONE</h1>
-    <p>Your World of Mini Games</p>
-</header><section class="hero">
-    <div class="badge">⚡ ENTER THE GAME ZONE</div>
-    <h2>Ready to Play?</h2>
-    <p>Choose your favourite game, challenge yourself<br>and have fun!</p>
-</section><section class="games"><div class="card purple">
-    <div class="icon">🎯</div>
-    <h3>Number Guessing</h3>
-    <p>Can you discover the secret number?</p>
-    <a href="/guess" class="play">Play Now →</a>
+    <p>Your world of fun and mini games!</p>
+</header><main class="container">
+    <h2>Choose Your Game</h2>
+    <p class="intro">Challenge yourself, test your skills and have fun!</p><div class="games">
+
+    <a href="/guess" class="card purple">
+        <div class="icon">🔢</div>
+        <h3>Number Guessing</h3>
+        <p>Can you guess the hidden number?</p>
+    </a>
+
+    <a href="/rps" class="card blue">
+        <div class="icon">✊</div>
+        <h3>Rock Paper Scissors</h3>
+        <p>Challenge the computer and win!</p>
+    </a>
+
+    <a href="/memory" class="card pink">
+        <div class="icon">🧠</div>
+        <h3>Memory Cards</h3>
+        <p>Match the cards and test your memory.</p>
+    </a>
+
+    <a href="/reaction" class="card green">
+        <div class="icon">⚡</div>
+        <h3>Reaction Speed</h3>
+        <p>How fast can you react?</p>
+    </a>
+
 </div>
 
-<div class="card blue">
-    <div class="icon">✊</div>
-    <h3>Rock Paper Scissors</h3>
-    <p>Challenge the computer and claim victory!</p>
-    <a href="/rps" class="play">Play Now →</a>
-</div>
-
-<div class="card pink">
-    <div class="icon">🧠</div>
-    <h3>Memory Cards</h3>
-    <p>Test your memory and match all the pairs.</p>
-    <a href="/memory" class="play">Play Now →</a>
-</div>
-
-<div class="card green">
-    <div class="icon">⚡</div>
-    <h3>Reaction Speed</h3>
-    <p>How fast can you react? Put yourself to the test!</p>
-    <a href="/reaction" class="play">Play Now →</a>
-</div>
-
-</section><footer>
-    <p>© 2026 PLAYZONE. All Rights Reserved.</p>
-    <p>Play • Challenge • Enjoy</p>
+</main><footer>
+    © 2026 PLAYZONE. All rights reserved.
 </footer></body>
-</html>
+    </html>
