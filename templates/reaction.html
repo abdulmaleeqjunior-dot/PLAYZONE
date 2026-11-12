@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Test - PLAYZONE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080d1b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .game {
+            max-width: 450px;
+            margin: 50px auto;
+            background: #121e38;
+            padding: 30px 20px;
+            border: 1px solid #00e5ff;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #00e5ff;
+        }
+
+        #reactionBox {
+            background: #263957;
+            padding: 70px 15px;
+            border-radius: 12px;
+            margin: 25px 0;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        button {
+            background: #00e5ff;
+            color: #080d1b;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #result {
+            color: #00e5ff;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        a {
+            display: block;
+            color: #00e5ff;
+            margin-top: 25px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>⚡ Reaction Speed Test</h1>
+
+    <p>Test how quickly you can react!</p>
+
+    <div id="reactionBox">
+        Press Start to Begin
+    </div>
+
+    <button onclick="startGame()">Start Test</button>
+
+    <p id="result">Your result will appear here.</p>
+
+    <a href="/">← Back to PLAYZONE</a>
+
+</div>
+
+<script>
+
+    let startTime;
+    let timeout;
+    let state = "idle";
+
+    const box = document.getElementById("reactionBox");
+    const result = document.getElementById("result");
+
+    function startGame() {
+
+        clearTimeout(timeout);
+
+        state = "waiting";
+
+        box.style.background = "#d97706";
+        box.textContent = "Wait for GREEN...";
+        result.textContent = "Get ready!";
+
+        const delay = Math.random() * 3000 + 2000;
+
+        timeout = setTimeout(() => {
+
+            state = "ready";
+
+            box.style.background = "#16a34a";
+            box.textContent = "TAP NOW!";
+            startTime = performance.now();
+
+        }, delay);
+
+    }
+
+    box.addEventListener("click", () => {
+
+        if (state === "waiting") {
+
+            clearTimeout(timeout);
+
+            state = "idle";
+
+            box.style.background = "#dc2626";
+            box.textContent = "Too early! Try again.";
+
+            result.textContent = "Wait until the box turns green.";
+
+        } else if (state === "ready") {
+
+            const reactionTime = Math.round(
+                performance.now() - startTime
+            );
+
+            state = "finished";
+
+            box.style.background = "#263957";
+            box.textContent = "Test Complete!";
+
+            result.textContent =
+                "Your reaction time: " + reactionTime + " ms";
+
+        }
+
+    });
+
+</script>
+
+</div>
+
+</body>
+</html>
