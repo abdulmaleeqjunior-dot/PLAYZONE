@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing - PLAYZONE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080d1b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .game {
+            max-width: 450px;
+            margin: 60px auto;
+            background: #121e38;
+            padding: 30px 20px;
+            border-radius: 15px;
+            border: 1px solid #00e5ff;
+        }
+
+        h1 {
+            color: #00e5ff;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border: none;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #00e5ff;
+            color: #080d1b;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #message {
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        a {
+            color: #00e5ff;
+            display: block;
+            margin-top: 25px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="game">
+
+    <h1>🎯 Guess The Number</h1>
+
+    <p>I'm thinking of a number between 1 and 100.</p>
+
+    <p>Can you guess it?</p>
+
+    <input
+        type="number"
+        id="guess"
+        placeholder="Enter your guess"
+        min="1"
+        max="100"
+    >
+
+    <button onclick="checkGuess()">Submit Guess</button>
+
+    <button onclick="restartGame()">Restart</button>
+
+    <p id="message">Good luck!</p>
+
+    <p>Attempts: <span id="attempts">0</span></p>
+
+    <a href="/">← Back to PLAYZONE</a>
+
+</div>
+
+<script>
+
+    let secretNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+    let gameOver = false;
+
+    function checkGuess() {
+
+        if (gameOver) return;
+
+        let input = document.getElementById("guess");
+        let guess = Number(input.value);
+        let message = document.getElementById("message");
+
+        if (!input.value || guess < 1 || guess > 100) {
+            message.textContent = "Enter a number between 1 and 100!";
+            return;
+        }
+
+        attempts++;
+
+        document.getElementById("attempts").textContent = attempts;
+
+        if (guess === secretNumber) {
+
+            message.textContent =
+                "🎉 Correct! You won in " + attempts + " attempts!";
+
+            gameOver = true;
+
+        } else if (guess < secretNumber) {
+
+            message.textContent = "📈 Too low! Try a higher number.";
+
+        } else {
+
+            message.textContent = "📉 Too high! Try a lower number.";
+
+        }
+
+        input.value = "";
+    }
+
+    function restartGame() {
+
+        secretNumber = Math.floor(Math.random() * 100) + 1;
+
+        attempts = 0;
+        gameOver = false;
+
+        document.getElementById("attempts").textContent = 0;
+        document.getElementById("message").textContent = "New game! Good luck!";
+        document.getElementById("guess").value = "";
+
+    }
+
+</script>
+
+</body>
+</html>
